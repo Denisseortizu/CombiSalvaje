@@ -2,6 +2,8 @@ import 'package:combi_salvaje/routes/home.dart';
 import 'package:combi_salvaje/routes/login.dart';
 import 'package:combi_salvaje/routes/footer_menu.dart';
 import 'package:combi_salvaje/routes/register.dart';
+import 'package:combi_salvaje/routes/map.dart';
+
 import 'package:flutter/material.dart';
 
 void main(){
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
           '/home': (context) => const Home(),
           '/register': (context) => const Register(),
           '/login': (context) => const Login(),
-          //'/map': (context) => const MapScreen(),
+          '/map': (context) => const MapS(),
           //'/user': (context) => const UserScreen(),
           //'/driver': (context) => const DriverScreen(),
         },
