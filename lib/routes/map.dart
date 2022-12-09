@@ -1,91 +1,197 @@
+import 'dart:async';
+import 'dart:math';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:latlng/latlng.dart';
+import 'package:map/map.dart';
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:combi_salvaje/utils/tile_servers.dart';
+import 'package:combi_salvaje/utils/utils.dart';
 class MapS extends StatelessWidget {
   const MapS({Key? key}) : super(key: key);
-  static const String _titulo = 'CombiSalvaje';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-    title: _titulo,
-    home: Scaffold(
-    appBar: AppBar(
-    title: const Text(_titulo),
-    backgroundColor: Colors.deepPurple,
-    foregroundColor: Colors.white,
-    ),
-    body: const MyStatefulWidget(),
-    ),
+      title: 'Flutter Google Maps Demo',
+      home: MapSample(),
     );
-    throw UnimplementedError();
   }
 }
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
 
+class MapSample extends StatefulWidget {
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+  State<MapSample> createState() => MapSampleState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+class MapSampleState extends State<MapSample> {
+
+  final controller = MapController(
+    location: const LatLng(19.7229386, -101.1858201),
+  );
+
+
+  final markers = [
+
+    const LatLng(19.7229386, -101.1858201),
+    const LatLng(19.6852143, -101.1650081),
+    const LatLng(19.719214, -101.2265527),
+    const LatLng(19.7103869, -101.1656628),
+    const LatLng(19.6818358, -101.1775493),
+    const LatLng(19.6748941, -101.2208957),
+  ];
+
+  void _gotoDefault() {
+    controller.center = const LatLng(19.7229386, -101.1858201);
+    setState(() {});
+  }
+
+  void _onDoubleTap(MapTransformer transformer, Offset position) {
+    const delta = 0.5;
+
+    final zoom = clamp(controller.zoom + delta, 2, 18);
+
+    transformer.setZoomInPlace(zoom, position);
+    setState(() {});
+  }
+
+  Offset? _dragStart;
+  double _scaleStart = 1.0;
+  void _onScaleStart(ScaleStartDetails details) {
+    _dragStart = details.focalPoint;
+    _scaleStart = 1.0;
+  }
+
+  void _onScaleUpdate(ScaleUpdateDetails details, MapTransformer transformer) {
+    final scaleDiff = details.scale - _scaleStart;
+    _scaleStart = details.scale;
+
+    if (scaleDiff > 0) {
+      controller.zoom += 0.02;
+      setState(() {});
+    } else if (scaleDiff < 0) {
+      controller.zoom -= 0.02;
+      setState(() {});
+    } else {
+      final now = details.focalPoint;
+      final diff = now - _dragStart!;
+      _dragStart = now;
+      transformer.drag(diff.dx, diff.dy);
+      setState(() {});
+    }
+  }
+
+
+  Widget _buildMarkerWidget(Offset pos, Color color,
+      [IconData icon = Icons.location_on]) {
+    return Positioned(
+      left: pos.dx - 24,
+      top: pos.dy - 24,
+      width: 48,
+      height: 48,
+      child: GestureDetector(
+        child: Icon(
+          icon,
+          color: color,
+          size: 48,
+        ),
+        onTap: () {
+          showDialog(
+            context: context,
+            builder: (context) => const AlertDialog(
+              content: Text('You have clicked a marker!'),
+            ),
+          );
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.all(10),
-        child: ListView(
-          children: <Widget>[
-            Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(10),
-                margin: const EdgeInsets.only(top: 250.0),
-                child: const Text(
-                  'Iniciar Sesión',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w800,
-                      fontSize: 30),
-                )),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Ruta Combi Gris Circuito'),
+      ),
+      body: MapLayout(
+        controller: controller,
+        builder: (context, transformer) {
+          final markerPositions = markers.map(transformer.toOffset).toList();
 
-            Container(
-              padding: const EdgeInsets.all(10),
-              child: TextField(
-                controller: nameController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Correo',
-                ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: TextField(
-                obscureText: true,
-                controller: passwordController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Contraseña',
-                ),
-              ),
-            ),
+          final markerWidgets = markerPositions.map(
+                (pos) => _buildMarkerWidget(pos, Colors.red),
+          );
 
-            Container(
-                height: 50,
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                margin: const EdgeInsets.only(top: 20.0),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.deepPurple,
+          final homeLocation = transformer.toOffset(const LatLng(35.68, 51.42));
+
+          final homeMarkerWidget =
+          _buildMarkerWidget(homeLocation, Colors.black, Icons.home);
+
+          final centerLocation = Offset(
+              transformer.constraints.biggest.width / 2,
+              transformer.constraints.biggest.height / 2);
+
+          final centerMarkerWidget =
+          _buildMarkerWidget(centerLocation, Colors.purple);
+
+          return GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onDoubleTapDown: (details) => _onDoubleTap(
+              transformer,
+              details.localPosition,
+            ),
+            onScaleStart: _onScaleStart,
+            onScaleUpdate: (details) => _onScaleUpdate(details, transformer),
+            child: Listener(
+              behavior: HitTestBehavior.opaque,
+              onPointerSignal: (event) {
+                if (event is PointerScrollEvent) {
+                  final delta = event.scrollDelta.dy / -1000.0;
+                  final zoom = clamp(controller.zoom + delta, 2, 18);
+
+                  transformer.setZoomInPlace(zoom, event.localPosition);
+                  setState(() {});
+                }
+              },
+              child: Stack(
+                children: [
+                  TileLayer(
+                    builder: (context, x, y, z) {
+                      final tilesInZoom = pow(2.0, z).floor();
+
+                      while (x < 0) {
+                        x += tilesInZoom;
+                      }
+                      while (y < 0) {
+                        y += tilesInZoom;
+                      }
+
+                      x %= tilesInZoom;
+                      y %= tilesInZoom;
+
+                      return CachedNetworkImage(
+                        imageUrl: google(z, x, y),
+                        fit: BoxFit.cover,
+                      );
+                    },
                   ),
-                  child: const Text('Vamos',),
-                  onPressed: () {
-                    print(nameController.text);
-                    print(passwordController.text);
-                  },
-                )
+                  homeMarkerWidget,
+                  ...markerWidgets,
+                  centerMarkerWidget,
+                ],
+              ),
             ),
-          ],
-        ));
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _gotoDefault,
+        tooltip: 'My Location',
+        child: const Icon(Icons.my_location),
+      ),
+    );
   }
 }
+
+
