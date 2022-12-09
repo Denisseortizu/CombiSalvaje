@@ -1,4 +1,7 @@
+import 'package:combi_salvaje/routes/register.dart';
 import 'package:flutter/material.dart';
+
+import 'login.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -74,6 +77,10 @@ class Home extends StatelessWidget {
                       onPressed: () {
                         print(nameController.text);
                         print(passwordController.text);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Login()),
+                        );
                       },
                     )
                 ),
@@ -90,6 +97,10 @@ class Home extends StatelessWidget {
                       onPressed: () {
                         print(nameController.text);
                         print(passwordController.text);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Register()),
+                        );
                       },
                     )
                 ),
