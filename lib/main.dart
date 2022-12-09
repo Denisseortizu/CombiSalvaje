@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           //'/footer_menu': (context) => FooterMenu(context),
           '/home': (context) => const Home(),
           '/register': (context) => const Register(),
-          '/login': (context) => const Login(),vv
+          '/login': (context) => const Login(),
           //'/map': (context) => const MapScreen(),
           //'/user': (context) => const UserScreen(),
           //'/driver': (context) => const DriverScreen(),

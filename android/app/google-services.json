@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "383976615054",
+    "project_id": "combi-salvaje",
+    "storage_bucket": "combi-salvaje.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:383976615054:android:833394331f34648a8eaddf",
+        "android_client_info": {
+          "package_name": "com.example.combi_salvaje"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "383976615054-p1t441m4fq7lolqvmviaos8lihhuh4fa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7Qk0yWdDPqqnWDZyvcVMP6SnpBJGMyQw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "383976615054-p1t441m4fq7lolqvmviaos8lihhuh4fa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
