@@ -2,6 +2,11 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
+<<<<<<< HEAD
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/la_combi_salvaje/build" />
       <excludeFolder url="file://$MODULE_DIR$/la_combi_salvaje/.pub" />
@@ -14,5 +19,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />
     <orderEntry type="library" name="Dart Packages" level="project" />
+>>>>>>> ff465807bac6810abf4f3c759724b928584c9cb5
   </component>
 </module>
