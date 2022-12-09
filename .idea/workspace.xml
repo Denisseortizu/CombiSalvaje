@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9b09ea7-5eb9-4d2b-ad0b-d5b0d5a88f66" name="Changes" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/CombiSalvaje.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CombiSalvaje.iml" afterDir="false" />
@@ -20,6 +21,11 @@
       <change beforePath="$PROJECT_DIR$/lib/routes/register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/register.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/lib/routes/UserServices.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/register.dart" afterDir="false" />
+>>>>>>> parent of 71d009e (Metodo de firebase)
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
