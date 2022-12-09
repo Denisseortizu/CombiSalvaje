@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 class Register extends StatelessWidget {
   const Register({Key? key}) : super(key: key);
 
@@ -29,8 +29,10 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController RnameController = TextEditingController();
+  TextEditingController RemailController = TextEditingController();
+  TextEditingController RpasswordController = TextEditingController();
+  TextEditingController RSecPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
-                controller: nameController,
+                controller: RnameController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Nombre',
@@ -67,7 +69,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
-                controller: nameController,
+                controller: RemailController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Correo',
@@ -78,7 +80,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
               child: TextField(
                 obscureText: true,
-                controller: passwordController,
+                controller: RpasswordController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Contraseña',
@@ -90,7 +92,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
               child: TextField(
                 obscureText: true,
-                controller: passwordController,
+                controller: RSecPasswordController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Confirmar Contraseña',
@@ -108,8 +110,24 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                   child: const Text('Registrarme',),
                   onPressed: () {
-                    print(nameController.text);
-                    print(passwordController.text);
+
+                    if(RpasswordController.text==RSecPasswordController.text){
+                        
+
+
+                    }else{
+                      Fluttertoast.showToast(
+                          msg: "La contraseña no coincide",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.CENTER,
+                          timeInSecForIosWeb: 3,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                          fontSize: 30.0
+                      );
+
+                    };
+
                   },
                 )
             ),

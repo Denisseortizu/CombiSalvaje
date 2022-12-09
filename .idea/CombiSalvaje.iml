@@ -3,9 +3,18 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+<<<<<<< HEAD
       <excludeFolder url="file://$MODULE_DIR$/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
+=======
+      <excludeFolder url="file://$MODULE_DIR$/build" />
+      <excludeFolder url="file://$MODULE_DIR$/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/la_combi_salvaje/build" />
+      <excludeFolder url="file://$MODULE_DIR$/la_combi_salvaje/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/la_combi_salvaje/.pub" />
+>>>>>>> c1b3eb653573bd23240d740f063cac2a3c630a1e
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
