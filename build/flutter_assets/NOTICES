@@ -6918,8 +6918,6 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 --------------------------------------------------------------------------------
-<<<<<<< HEAD
-=======
 fluttertoast
 
 MIT License
@@ -6945,7 +6943,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 --------------------------------------------------------------------------------
->>>>>>> c1b3eb653573bd23240d740f063cac2a3c630a1e
 freetype2
 
 Copyright (C) 1995-2006, 2010, 2011, 2012, 2016 Mark Adler
@@ -11427,8 +11424,6 @@ shall not be used in advertising or otherwise to promote the sale,
 use or other dealings in these Data Files or Software without prior
 written authorization of the copyright holder.
 --------------------------------------------------------------------------------
-<<<<<<< HEAD
-=======
 js
 
 Copyright 2012, the Dart project authors.
@@ -11460,7 +11455,6 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 --------------------------------------------------------------------------------
->>>>>>> c1b3eb653573bd23240d740f063cac2a3c630a1e
 khronos
 
 Copyright (c) 2007-2010 The Khronos Group Inc.

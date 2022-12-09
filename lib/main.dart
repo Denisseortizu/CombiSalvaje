@@ -3,9 +3,12 @@ import 'package:combi_salvaje/routes/login.dart';
 import 'package:combi_salvaje/routes/footer_menu.dart';
 import 'package:combi_salvaje/routes/register.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main(){
+
   runApp(MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
