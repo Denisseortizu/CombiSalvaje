@@ -1,11 +1,12 @@
 import 'package:combi_salvaje/routes/register.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class UserServices {
 
 
   Future<bool> saveUser(String name, String email, String password) async{
     try {
-      await Firebasedatabase.instance
+      await FirebaseDatabase.instance
           .reference()
           .child('Users')
           .push()
@@ -13,7 +14,7 @@ class UserServices {
       return true;
     }catch (e){
       print(e);
-      return:false;
+      return false;
     }
   }
 
